@@ -1,0 +1,1747 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مقهى لاكاس العراقي | La Casa Café</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Naskh+Arabic:wght@400;500;600;700&family=Scheherazade+New:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --gold: #D4AF37;
+            --gold-light: #F4E4A6;
+            --gold-dark: #B8860B;
+            --brown: #8B4513;
+            --brown-light: #A0522D;
+            --coffee: #6F4E37;
+            --creamy: #FFF8F0;
+            --text-dark: #3A2C1A;
+            --text-light: #7D6B52;
+            --green: #2E8B57;
+            --red: #C41E3A;
+            --shadow: rgba(139, 69, 19, 0.15);
+            --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Noto Naskh Arabic', serif;
+            background-color: var(--creamy);
+            color: var(--text-dark);
+            line-height: 1.8;
+            overflow-x: hidden;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header Styles */
+        header {
+            background: linear-gradient(135deg, var(--brown) 0%, var(--text-dark) 100%);
+            color: white;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 15px 0;
+            box-shadow: 0 5px 30px rgba(0, 0, 0, 0.2);
+            transition: var(--transition);
+            border-bottom: 3px solid var(--gold);
+        }
+
+        header.scrolled {
+            padding: 10px 0;
+            background: rgba(139, 69, 19, 0.98);
+            backdrop-filter: blur(10px);
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo {
+            font-family: 'Scheherazade New', serif;
+            font-size: 2.8rem;
+            font-weight: 700;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            cursor: pointer;
+            transition: var(--transition);
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .logo:hover {
+            transform: scale(1.05);
+        }
+
+        .logo-main {
+            color: var(--gold);
+            line-height: 1;
+        }
+
+        .logo-sub {
+            font-size: 1.2rem;
+            color: var(--gold-light);
+            margin-top: -5px;
+        }
+
+        .logo-flag {
+            display: flex;
+            gap: 5px;
+            margin-top: 5px;
+        }
+
+        .flag-color {
+            width: 20px;
+            height: 5px;
+            border-radius: 2px;
+        }
+
+        .red { background-color: #CE1126; }
+        .white { background-color: white; }
+        .black { background-color: black; }
+        .green { background-color: #007A3D; }
+
+        .nav-links {
+            display: flex;
+            gap: 35px;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.2rem;
+            position: relative;
+            padding: 5px 0;
+            transition: var(--transition);
+        }
+
+        .nav-links a:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 0;
+            height: 3px;
+            background-color: var(--gold);
+            transition: width 0.3s ease;
+            border-radius: 3px;
+        }
+
+        .nav-links a:hover {
+            color: var(--gold);
+        }
+
+        .nav-links a:hover:after {
+            width: 100%;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            font-size: 1.8rem;
+            background: none;
+            border: none;
+            color: white;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1559925393-8be0ec4767c8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1471&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: white;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 100%;
+            height: 100%;
+            background: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23d4af37' fill-opacity='0.1' fill-rule='evenodd'/%3E%3C/svg%3E");
+        }
+
+        .hero-content {
+            max-width: 900px;
+            z-index: 2;
+            animation: fadeUp 1.2s ease-out;
+        }
+
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero h1 {
+            font-family: 'Scheherazade New', serif;
+            font-size: 4.5rem;
+            margin-bottom: 20px;
+            line-height: 1.1;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+            color: var(--gold);
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            margin-bottom: 30px;
+            max-width: 700px;
+            font-weight: 500;
+        }
+
+        .hero-btns {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .hero-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: var(--gold);
+            color: var(--text-dark);
+            padding: 18px 45px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1.3rem;
+            text-decoration: none;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+        }
+
+        .hero-btn.outline {
+            background: transparent;
+            color: white;
+            border: 2px solid var(--gold);
+        }
+
+        .hero-btn:hover {
+            background: white;
+            color: var(--text-dark);
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+        }
+
+        .hero-btn.outline:hover {
+            background: var(--gold);
+            color: var(--text-dark);
+        }
+
+        /* Sections */
+        section {
+            padding: 100px 0;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 70px;
+            position: relative;
+        }
+
+        .section-header h2 {
+            font-family: 'Scheherazade New', serif;
+            font-size: 3.5rem;
+            color: var(--brown);
+            display: inline-block;
+            position: relative;
+            padding-bottom: 20px;
+            margin-bottom: 20px;
+        }
+
+        .section-header h2:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 50%;
+            transform: translateX(50%);
+            width: 150px;
+            height: 5px;
+            background: var(--gold);
+            border-radius: 3px;
+        }
+
+        .section-header p {
+            color: var(--text-light);
+            max-width: 800px;
+            margin: 20px auto 0;
+            font-size: 1.3rem;
+            line-height: 1.8;
+        }
+
+        /* About Section */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+        }
+
+        .about-img {
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+            transition: var(--transition);
+            position: relative;
+            border: 10px solid white;
+        }
+
+        .about-img:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 35px 70px rgba(0, 0, 0, 0.2);
+        }
+
+        .about-img img {
+            width: 100%;
+            height: 600px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .about-text h3 {
+            font-family: 'Scheherazade New', serif;
+            font-size: 3rem;
+            color: var(--brown);
+            margin-bottom: 30px;
+            line-height: 1.2;
+        }
+
+        .about-text p {
+            font-size: 1.3rem;
+            margin-bottom: 25px;
+            color: var(--text-light);
+            line-height: 1.9;
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .feature {
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+            padding: 25px;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px var(--shadow);
+            transition: var(--transition);
+        }
+
+        .feature:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(139, 69, 19, 0.2);
+        }
+
+        .feature i {
+            background: linear-gradient(135deg, var(--gold) 0%, var(--gold-dark) 100%);
+            color: white;
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            flex-shrink: 0;
+        }
+
+        .feature-content h4 {
+            font-size: 1.5rem;
+            color: var(--brown);
+            margin-bottom: 10px;
+        }
+
+        /* Menu Categories */
+        .categories-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 40px;
+            margin-top: 50px;
+        }
+
+        .category-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 15px 40px var(--shadow);
+            transition: var(--transition);
+            cursor: pointer;
+            position: relative;
+            height: 100%;
+            border: 2px solid transparent;
+        }
+
+        .category-card:hover {
+            transform: translateY(-20px);
+            box-shadow: 0 25px 60px rgba(139, 69, 19, 0.25);
+            border-color: var(--gold);
+        }
+
+        .category-card img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            transition: transform 0.7s ease;
+        }
+
+        .category-card:hover img {
+            transform: scale(1.15);
+        }
+
+        .category-content {
+            padding: 30px;
+            text-align: center;
+        }
+
+        .category-content h3 {
+            font-family: 'Scheherazade New', serif;
+            font-size: 2.2rem;
+            color: var(--brown);
+            margin-bottom: 15px;
+        }
+
+        .category-content p {
+            color: var(--text-light);
+            margin-bottom: 25px;
+            font-size: 1.2rem;
+        }
+
+        .category-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: linear-gradient(135deg, var(--brown) 0%, var(--coffee) 100%);
+            color: white;
+            padding: 12px 35px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: var(--transition);
+            border: 2px solid transparent;
+        }
+
+        .category-btn:hover {
+            background: transparent;
+            color: var(--brown);
+            border-color: var(--brown);
+            transform: scale(1.05);
+        }
+
+        /* Full Menu Section */
+        .full-menu {
+            background: linear-gradient(135deg, #f9f5f0 0%, #f0e6d6 100%);
+            border-top: 5px solid var(--gold);
+            border-bottom: 5px solid var(--gold);
+        }
+
+        .menu-tabs {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 60px;
+        }
+
+        .menu-tab {
+            background: white;
+            border: 2px solid var(--gold);
+            color: var(--brown);
+            padding: 15px 35px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .menu-tab:hover, .menu-tab.active {
+            background: var(--gold);
+            color: var(--text-dark);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(212, 175, 55, 0.3);
+        }
+
+        .menu-panel {
+            display: none;
+            animation: fadeIn 0.8s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .menu-panel.active {
+            display: block;
+        }
+
+        .menu-category-title {
+            font-family: 'Scheherazade New', serif;
+            font-size: 2.8rem;
+            color: var(--brown);
+            text-align: center;
+            margin-bottom: 50px;
+            padding-bottom: 20px;
+            border-bottom: 3px dashed var(--gold-light);
+        }
+
+        .menu-items-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 40px;
+        }
+
+        .menu-item-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 15px 40px var(--shadow);
+            transition: var(--transition);
+            opacity: 0;
+            transform: translateY(30px);
+            height: 100%;
+            border: 1px solid #f0e6d6;
+        }
+
+        .menu-item-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .menu-item-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 60px rgba(139, 69, 19, 0.25);
+        }
+
+        .item-img-container {
+            height: 250px;
+            width: 100%;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .item-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.7s ease;
+        }
+
+        .menu-item-card:hover .item-img {
+            transform: scale(1.1);
+        }
+
+        .item-badge {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background: var(--green);
+            color: white;
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            z-index: 2;
+        }
+
+        .item-badge.hot {
+            background: var(--red);
+        }
+
+        .item-content {
+            padding: 30px;
+        }
+
+        .item-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 15px;
+        }
+
+        .item-header h3 {
+            font-size: 1.8rem;
+            color: var(--brown);
+            line-height: 1.3;
+        }
+
+        .item-price {
+            background: linear-gradient(135deg, var(--gold) 0%, var(--gold-dark) 100%);
+            color: var(--text-dark);
+            padding: 10px 25px;
+            border-radius: 50px;
+            font-weight: 800;
+            font-size: 1.4rem;
+            white-space: nowrap;
+            margin-right: 10px;
+        }
+
+        .item-desc {
+            color: var(--text-light);
+            margin-bottom: 20px;
+            line-height: 1.7;
+            font-size: 1.1rem;
+        }
+
+        .item-tags {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .item-tag {
+            background: var(--creamy);
+            color: var(--brown);
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            border: 1px solid #e9d8c3;
+        }
+
+        /* Services Section */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 40px;
+            margin-top: 50px;
+        }
+
+        .service-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 15px 40px var(--shadow);
+            transition: var(--transition);
+            padding: 40px 30px;
+            text-align: center;
+            border-top: 5px solid var(--gold);
+        }
+
+        .service-card:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 25px 60px rgba(139, 69, 19, 0.25);
+        }
+
+        .service-icon {
+            width: 100px;
+            height: 100px;
+            background: linear-gradient(135deg, var(--gold-light) 0%, var(--gold) 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 30px;
+            font-size: 2.5rem;
+            color: white;
+        }
+
+        .service-card h3 {
+            font-family: 'Scheherazade New', serif;
+            font-size: 2rem;
+            color: var(--brown);
+            margin-bottom: 20px;
+        }
+
+        .service-card p {
+            color: var(--text-light);
+            font-size: 1.2rem;
+            line-height: 1.8;
+        }
+
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, var(--text-dark) 0%, #2A1F15 100%);
+            color: white;
+            padding: 100px 0 40px;
+            border-top: 5px solid var(--gold);
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 50px;
+            margin-bottom: 70px;
+        }
+
+        .footer-col h3 {
+            font-family: 'Scheherazade New', serif;
+            font-size: 1.8rem;
+            margin-bottom: 30px;
+            position: relative;
+            padding-bottom: 15px;
+            color: var(--gold);
+        }
+
+        .footer-col h3:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 60px;
+            height: 3px;
+            background: var(--gold);
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 18px;
+        }
+
+        .footer-links a {
+            color: #ddd;
+            text-decoration: none;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1.1rem;
+        }
+
+        .footer-links a:hover {
+            color: var(--gold);
+            transform: translateX(-5px);
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            margin-top: 25px;
+        }
+
+        .social-icons a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            font-size: 1.3rem;
+            transition: var(--transition);
+        }
+
+        .social-icons a:hover {
+            background: var(--gold);
+            color: var(--text-dark);
+            transform: translateY(-5px) rotate(5deg);
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            color: #ddd;
+        }
+
+        .contact-item i {
+            color: var(--gold);
+            font-size: 1.3rem;
+            width: 25px;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 40px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 1.1rem;
+            color: #aaa;
+        }
+
+        .copyright a {
+            color: var(--gold);
+            text-decoration: none;
+        }
+
+        /* Back to top button */
+        .back-to-top {
+            position: fixed;
+            bottom: 40px;
+            left: 40px;
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--gold) 0%, var(--gold-dark) 100%);
+            color: var(--text-dark);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            text-decoration: none;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+            z-index: 999;
+            transition: var(--transition);
+            opacity: 0;
+            visibility: hidden;
+            border: 3px solid white;
+        }
+
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .back-to-top:hover {
+            transform: translateY(-10px) rotate(360deg);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+        }
+
+        /* Floating WhatsApp */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 40px;
+            right: 40px;
+            width: 70px;
+            height: 70px;
+            background: #25D366;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.2rem;
+            text-decoration: none;
+            box-shadow: 0 10px 25px rgba(37, 211, 102, 0.3);
+            z-index: 999;
+            transition: var(--transition);
+            animation: pulse-whatsapp 2s infinite;
+        }
+
+        @keyframes pulse-whatsapp {
+            0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
+            70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+            background: #128C7E;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 1200px) {
+            .footer-content {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 40px;
+            }
+        }
+
+        @media (max-width: 992px) {
+            .hero h1 {
+                font-size: 3.5rem;
+            }
+            
+            .about-content {
+                grid-template-columns: 1fr;
+                gap: 60px;
+            }
+            
+            .about-img {
+                order: 2;
+            }
+            
+            .menu-items-grid {
+                grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                position: fixed;
+                top: 90px;
+                right: -100%;
+                flex-direction: column;
+                background: rgba(42, 31, 21, 0.98);
+                width: 100%;
+                text-align: center;
+                padding: 40px 0;
+                gap: 30px;
+                transition: var(--transition);
+                z-index: 999;
+                backdrop-filter: blur(10px);
+            }
+            
+            .nav-links.active {
+                right: 0;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+            
+            .hero p {
+                font-size: 1.3rem;
+            }
+            
+            .hero-btns {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .section-header h2 {
+                font-size: 2.8rem;
+            }
+            
+            .features {
+                grid-template-columns: 1fr;
+            }
+            
+            .menu-tabs {
+                justify-content: flex-start;
+                overflow-x: auto;
+                padding-bottom: 10px;
+            }
+            
+            .menu-tab {
+                flex-shrink: 0;
+            }
+            
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .back-to-top, .whatsapp-float {
+                bottom: 20px;
+                left: 20px;
+                width: 50px;
+                height: 50px;
+                font-size: 1.2rem;
+            }
+            
+            .whatsapp-float {
+                right: 20px;
+                width: 60px;
+                height: 60px;
+                font-size: 1.8rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero h1 {
+                font-size: 2.3rem;
+            }
+            
+            .section-header h2 {
+                font-size: 2.3rem;
+            }
+            
+            .about-text h3 {
+                font-size: 2.3rem;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .categories-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .menu-items-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .logo {
+                font-size: 2.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header id="header">
+        <div class="container header-container">
+            <div class="logo-container">
+                <div class="logo">
+                    <div class="logo-main">لاكاس</div>
+                    <div class="logo-sub">La Casa Café</div>
+                    <div class="logo-flag">
+                        <div class="flag-color red"></div>
+                        <div class="flag-color white"></div>
+                        <div class="flag-color black"></div>
+                        <div class="flag-color green"></div>
+                    </div>
+                </div>
+            </div>
+            
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <nav class="nav-links" id="navLinks">
+                <a href="#home"><i class="fas fa-home"></i> الرئيسية</a>
+                <a href="#about"><i class="fas fa-info-circle"></i> عن لاكاس</a>
+                <a href="#categories"><i class="fas fa-list"></i> الأقسام</a>
+                <a href="#menu"><i class="fas fa-utensils"></i> المنيو الكامل</a>
+                <a href="#services"><i class="fas fa-concierge-bell"></i> خدماتنا</a>
+                <a href="#contact"><i class="fas fa-phone"></i> اتصل بنا</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="hero-content">
+                <h1>مقهى لاكاس العراقي</h1>
+                <p>تجربة عراقية أصيلة تجمع بين عراقة الماضي وحداثة الحاضر. نقدم لكم أفضل المأكولات العراقية والعالمية في أجواء عائلية مميزة.</p>
+                <div class="hero-btns">
+                    <a href="#menu" class="hero-btn">
+                        <i class="fas fa-book-open"></i> استعرض المنيو
+                    </a>
+                    <a href="#contact" class="hero-btn outline">
+                        <i class="fas fa-map-marker-alt"></i> احجز طاولتك
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <div class="container">
+            <div class="section-header">
+                <h2>عن مقهى لاكاس</h2>
+                <p>تأسس مقهى لاكاس عام 2015 بفكرة بسيطة وهي تقديم أفضل تجربة مقهى عراقية تجمع بين الأصالة والحداثة. اليوم، نحن وجهة مفضلة للعائلات والأصدقاء في بغداد.</p>
+            </div>
+            
+            <div class="about-content">
+                <div class="about-img">
+                    <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="داخل مقهى لاكاس">
+                </div>
+                
+                <div class="about-text">
+                    <h3>لماذا تختار لاكاس؟</h3>
+                    <p>نحن نؤمن بأن كل زيارة إلى لاكاس يجب أن تكون تجربة لا تنسى. من ترحيبنا الحار بضيوفنا إلى آخر لقمة في طبقكم، نحرص على كل التفاصيل.</p>
+                    <p>نستخدم أفضل المكونات المحلية والعالمية، ونقدم تشكيلة واسعة من المأكولات العراقية التقليدية والأطباق العالمية بمذاق مميز.</p>
+                    
+                    <div class="features">
+                        <div class="feature">
+                            <i class="fas fa-coffee"></i>
+                            <div class="feature-content">
+                                <h4>قهوة عراقية أصيلة</h4>
+                                <p>نقدم أفضل أنواع القهوة العراقية المحمصة محلياً مع التمر والهيل</p>
+                            </div>
+                        </div>
+                        
+                        <div class="feature">
+                            <i class="fas fa-utensils"></i>
+                            <div class="feature-content">
+                                <h4>أطباق منزلية</h4>
+                                <p>أطباق عراقية تقليدية تحضر يومياً بمكونات طازجة ووصفات عائلية</p>
+                            </div>
+                        </div>
+                        
+                        <div class="feature">
+                            <i class="fas fa-smoking"></i>
+                            <div class="feature-content">
+                                <h4>نراكيل متنوعة</h4>
+                                <p>تشكيلة واسعة من النراكيل العراقية والعربية بأجود أنواع المعسل</p>
+                            </div>
+                        </div>
+                        
+                        <div class="feature">
+                            <i class="fas fa-users"></i>
+                            <div class="feature-content">
+                                <h4>أجواء عائلية</h4>
+                                <p>أقسام منفصلة للعائلات والأفراد مع أجواء هادئة وموسيقى خفيفة</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Categories Section -->
+    <section id="categories">
+        <div class="container">
+            <div class="section-header">
+                <h2>أقسام المنيو</h2>
+                <p>اكتشف تشكيلتنا الواسعة من المأكولات والمشروبات التي تناسب جميع الأذواق</p>
+            </div>
+            
+            <div class="categories-grid">
+                <!-- المشروبات الساخنة -->
+                <div class="category-card">
+                    <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="مشروبات ساخنة">
+                    <div class="category-content">
+                        <h3>المشروبات الساخنة</h3>
+                        <p>قهوة عراقية، قهوة تركية، كابتشينو، لاتيه، شاي عراقي، شاي أعشاب، سحلب، قهوة هيل</p>
+                        <a href="#hot-drinks" class="category-btn" data-tab="hot-drinks">
+                            <i class="fas fa-mug-hot"></i> استعرض القائمة
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- المشروبات الباردة -->
+                <div class="category-card">
+                    <img src="https://images.unsplash.com/photo-1551024709-8f23befc6f87?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1375&q=80" alt="مشروبات باردة">
+                    <div class="category-content">
+                        <h3>المشروبات الباردة</h3>
+                        <p>عصائر طازجة، ميلك شيك، سموذي، كوكتيل فواكه، ليمونادة، مشروبات غازية، مياه معبأة</p>
+                        <a href="#cold-drinks" class="category-btn" data-tab="cold-drinks">
+                            <i class="fas fa-glass-whiskey"></i> استعرض القائمة
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- النراكيل -->
+                <div class="category-card">
+                    <img src="img/arkela.png" alt="نراكيل">
+                    <div class="category-content">
+                        <h3>النراكيل</h3>
+                        <p>معسل تفاحتين، معسل عنب، معسل بطيخ، معسل فراولة، نركيلة فردية، نركيلة جماعية</p>
+                        <a href="#hookah" class="category-btn" data-tab="hookah">
+                            <i class="fas fa-smoking"></i> استعرض القائمة
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- المأكولات العراقية -->
+                <div class="category-card">
+                    <img src="https://images.unsplash.com/photo-1565299585323-38d6b0865b47?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1380&q=80" alt="مأكولات عراقية">
+                    <div class="category-content">
+                        <h3>المأكولات العراقية</h3>
+                        <p>قوزي، دولمة، تبولة، سلطة عراقية، باجة، كبة، سمك مسكوف، بامية، باقلاء</p>
+                        <a href="#iraqi-food" class="category-btn" data-tab="iraqi-food">
+                            <i class="fas fa-utensil-spoon"></i> استعرض القائمة
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- المأكولات العالمية -->
+                <div class="category-card">
+                    <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1381&q=80" alt="مأكولات عالمية">
+                    <div class="category-content">
+                        <h3>المأكولات العالمية</h3>
+                        <p>برجر، بيتزا، باستا، ساندويشات، سلطات، أسياخ دجاج، ستيك لحم، مقبلات</p>
+                        <a href="#international-food" class="category-btn" data-tab="international-food">
+                            <i class="fas fa-globe-americas"></i> استعرض القائمة
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- الحلويات -->
+                <div class="category-card">
+                    <img src="https://images.unsplash.com/photo-1563729784474-d77dbb933a9e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80" alt="حلويات">
+                    <div class="category-content">
+                        <h3>الحلويات</h3>
+                        <p>كنافة، بقلاوة، حلاوة جبن، كيك، تشيز كيك، مهلبية، أرز بالحليب، بوظة، آيس كريم</p>
+                        <a href="#desserts" class="category-btn" data-tab="desserts">
+                            <i class="fas fa-birthday-cake"></i> استعرض القائمة
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Full Menu Section -->
+    <section class="full-menu" id="menu">
+        <div class="container">
+            <div class="section-header">
+                <h2>المنيو الكامل</h2>
+                <p>استمتع بتشكيلتنا الشاملة من المأكولات والمشروبات المميزة</p>
+            </div>
+            
+            <div class="menu-tabs" id="menuTabs">
+                <div class="menu-tab active" data-tab="hot-drinks">
+                    <i class="fas fa-mug-hot"></i> المشروبات الساخنة
+                </div>
+                <div class="menu-tab" data-tab="cold-drinks">
+                    <i class="fas fa-glass-whiskey"></i> المشروبات الباردة
+                </div>
+                <div class="menu-tab" data-tab="hookah">
+                    <i class="fas fa-smoking"></i> النراكيل
+                </div>
+                <div class="menu-tab" data-tab="iraqi-food">
+                    <i class="fas fa-utensil-spoon"></i> المأكولات العراقية
+                </div>
+                <div class="menu-tab" data-tab="international-food">
+                    <i class="fas fa-globe-americas"></i> المأكولات العالمية
+                </div>
+                <div class="menu-tab" data-tab="desserts">
+                    <i class="fas fa-birthday-cake"></i> الحلويات
+                </div>
+            </div>
+            
+            <!-- المشروبات الساخنة -->
+            <div class="menu-panel active" id="hot-drinks-panel">
+                <h3 class="menu-category-title">المشروبات الساخنة</h3>
+                <div class="menu-items-grid">
+                    <div class="menu-item-card">
+                        <div class="item-img-container">
+                            <img src="https://images.unsplash.com/photo-1511537190424-bbbab87ac5eb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" class="item-img" alt="قهوة عراقية">
+                            <div class="item-badge">الأكثر طلباً</div>
+                        </div>
+                        <div class="item-content">
+                            <div class="item-header">
+                                <h3>قهوة عراقية أصيلة</h3>
+                                <span class="item-price">8,000 د.ع</span>
+                            </div>
+                            <p class="item-desc">قهوة عراقية تقليدية محضرة على الطريقة البغدادية مع الهيل والزعفران، تقدم مع التمر</p>
+                            <div class="item-tags">
+                                <span class="item-tag">عراقي</span>
+                                <span class="item-tag">هيل</span>
+                                <span class="item-tag">تقليدي</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="menu-item-card">
+                        <div class="item-img-container">
+                            <img src="https://images.unsplash.com/photo-1572442388796-11668a67e53d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1435&q=80" class="item-img" alt="شاي عراقي">
+                        </div>
+                        <div class="item-content">
+                            <div class="item-header">
+                                <h3>شاي عراقي كرك</h3>
+                                <span class="item-price">6,000 د.ع</span>
+                            </div>
+                            <p class="item-desc">شاي عراقي قوي محضر بالطريقة التقليدية مع الهيل والحبهان، يقدم في إبريق شاي نحاسي</p>
+                            <div class="item-tags">
+                                <span class="item-tag">عراقي</span>
+                                <span class="item-tag">كرك</span>
+                                <span class="item-tag">هيل</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="menu-item-card">
+                        <div class="item-img-container">
+                            <img src="https://images.unsplash.com/photo-1498804103079-a6351b050096?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80" class="item-img" alt="كابتشينو">
+                        </div>
+                        <div class="item-content">
+                            <div class="item-header">
+                                <h3>كابتشينو إيطالي</h3>
+                                <span class="item-price">12,000 د.ع</span>
+                            </div>
+                            <p class="item-desc">قهوة إسبريسو مع حليب مبخار ورغوة كثيفة، يمكن إضافة نكهات مثل الفانيلا أو الكراميل</p>
+                            <div class="item-tags">
+                                <span class="item-tag">إيطالي</span>
+                                <span class="item-tag">قهوة</span>
+                                <span class="item-tag">حليب</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- المشروبات الباردة -->
+            <div class="menu-panel" id="cold-drinks-panel">
+                <h3 class="menu-category-title">المشروبات الباردة</h3>
+                <div class="menu-items-grid">
+                    <div class="menu-item-card">
+                        <div class="item-img-container">
+                            <img src="https://images.unsplash.com/photo-1628992682633-bf2d40cb595f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" class="item-img" alt="عصير برتقال">
+                        </div>
+                        <div class="item-content">
+                            <div class="item-header">
+                                <h3>عصير برتقال طازج</h3>
+                                <span class="item-price">10,000 د.ع</span>
+                            </div>
+                            <p class="item-desc">عصير برتقال طازج مع ليمون ونعناع، محضر من برتقال فلسطيني طازج يومياً</p>
+                            <div class="item-tags">
+                                <span class="item-tag">طازج</span>
+                                <span class="item-tag">صحي</span>
+                                <span class="item-tag">فواكه</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="menu-item-card">
+                        <div class="item-img-container">
+                            <img src="https://images.unsplash.com/photo-1551024709-8f23befc6f87?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1375&q=80" class="item-img" alt="ميلك شيك">
+                            <div class="item-badge hot">الأكثر طلباً</div>
+                        </div>
+                        <div class="item-content">
+                            <div class="item-header">
+                                <h3>ميلك شيك أوريو</h3>
+                                <span class="item-price">15,000 د.ع</span>
+                            </div>
+                            <p class="item-desc">ميلك شيك شهي من الحليب المثلج والآيس كريم مع بسكويت أوريو المطحون، يقدم مع كريمة</p>
+                            <div class="item-tags">
+                                <span class="item-tag">حلو</span>
+                                <span class="item-tag">مثلج</span>
+                                <span class="item-tag">أوريو</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="menu-item-card">
+                        <div class="item-img-container">
+                            <img src="https://images.unsplash.com/photo-1551024709-8f23befc6f87?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1375&q=80" class="item-img" alt="ليمونادة">
+                        </div>
+                        <div class="item-content">
+                            <div class="item-header">
+                                <h3>ليمونادة بالنعناع</h3>
+                                <span class="item-price">8,000 د.ع</span>
+                            </div>
+                            <p class="item-desc">ليمونادة منعشة محضرة من ليمون طازج ونعناع أخضر وسكر، تقدم مثلجة مع شرائح ليمون</p>
+                            <div class="item-tags">
+                                <span class="item-tag">منعش</span>
+                                <span class="item-tag">صيفي</span>
+                                <span class="item-tag">ليمون</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- النراكيل -->
+            <div class="menu-panel" id="hookah-panel">
+                <h3 class="menu-category-title">النراكيل</h3>
+                <div class="menu-items-grid">
+                    <div class="menu-item-card">
+                        <div class="item-img-container">
+                            <img src="img/arkela.png" class="item-img" alt="نركيلة تفاحتين">
+                        </div>
+                        <div class="item-content">
+                            <div class="item-header">
+                                <h3>نركيلة تفاحتين</h3>
+                                <span class="item-price">5,000 د.ع</span>
+                            </div>
+                            <p class="item-desc">معسل تفاحتين عالي الجودة مع فحم طبيعي، تقدم مع رأس فواكه مجانية وخدمة تبديل المعسل</p>
+                            <div class="item-tags">
+                                <span class="item-tag">تفاحتين</span>
+                                <span class="item-tag">تقليدي</span>
+                                <span class="item-tag">خدمة مجانية</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="menu-item-card">
+                        <div class="item-img-container">
+                            <img src="img/arkela2.jpg" class="item-img" alt="نركيلة عنب">
+                            <div class="item-badge">الأكثر طلباً</div>
+                        </div>
+                        <div class="item-content">
+                            <div class="item-header">
+                                <h3>نركيلة معسل عنب</h3>
+                                <span class="item-price">7,000 د.ع</span>
+                            </div>
+                            <p class="item-desc">معسل عنب مميز مع نكهات عنب طبيعية، تقدم مع فحم ناراجيلا وخدمة تبديل مجانية للمعسل</p>
+                            <div class="item-tags">
+                                <span class="item-tag">عنب</span>
+                                <span class="item-tag">مميز</span>
+                                <span class="item-tag">فحم ناراجيلا</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- المأكولات العراقية -->
+            <div class="menu-panel" id="iraqi-food-panel">
+                <h3 class="menu-category-title">المأكولات العراقية</h3>
+                <div class="menu-items-grid">
+                    <div class="menu-item-card">
+                        <div class="item-img-container">
+                            <img src="https://images.unsplash.com/photo-1565299585323-38d6b0865b47?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1380&q=80" class="item-img" alt="قوزي">
+                        </div>
+                        <div class="item-content">
+                            <div class="item-header">
+                                <h3>قوزي عراقي</h3>
+                                <span class="item-price">45,000 د.ع</span>
+                            </div>
+                            <p class="item-desc">لحم ضأن مطهو ببطء مع الأرز البسمتي واللوز والصنوبر والزبيب، يقدم مع صلصة خاصة</p>
+                            <div class="item-tags">
+                                <span class="item-tag">لحم ضأن</span>
+                                <span class="item-tag">وجبة رئيسية</span>
+                                <span class="item-tag">عراقي أصيل</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- المأكولات العالمية -->
+            <div class="menu-panel" id="international-food-panel">
+                <h3 class="menu-category-title">المأكولات العالمية</h3>
+                <div class="menu-items-grid">
+                    <div class="menu-item-card">
+                        <div class="item-img-container">
+                            <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1381&q=80" class="item-img" alt="برجر">
+                        </div>
+                        <div class="item-content">
+                            <div class="item-header">
+                                <h3>برجر لاكاس الخاص</h3>
+                                <span class="item-price">25,000 د.ع</span>
+                            </div>
+                            <p class="item-desc">برجر لحم بقري طازج 200غ مع جبنة شيدر، خس، طماطم، بصل، مخلل، وصوص خاص</p>
+                            <div class="item-tags">
+                                <span class="item-tag">لحم بقري</span>
+                                <span class="item-tag">وجبة رئيسية</span>
+                                <span class="item-tag">برجر</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- الحلويات -->
+            <div class="menu-panel" id="desserts-panel">
+                <h3 class="menu-category-title">الحلويات</h3>
+                <div class="menu-items-grid">
+                    <div class="menu-item-card">
+                        <div class="item-img-container">
+                            <img src="https://images.unsplash.com/photo-1563729784474-d77dbb933a9e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80" class="item-img" alt="كيك الجبن">
+                        </div>
+                        <div class="item-content">
+                            <div class="item-header">
+                                <h3>كيك الجبن بالتوت</h3>
+                                <span class="item-price">18,000 د.ع</span>
+                            </div>
+                            <p class="item-desc">كيك جبن كريمي نيويوركي مع طبقة من صلصة التوت الطازج، يقدم مع كريمة خفيفة</p>
+                            <div class="item-tags">
+                                <span class="item-tag">حلويات</span>
+                                <span class="item-tag">كيك</span>
+                                <span class="item-tag">توت</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services">
+        <div class="container">
+            <div class="section-header">
+                <h2>خدماتنا المميزة</h2>
+                <p>نقدم لكم مجموعة متنوعة من الخدمات لضمان تجربة استثنائية في لاكاس</p>
+            </div>
+            
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-calendar-check"></i>
+                    </div>
+                    <h3>حجز طاولات</h3>
+                    <p>احجز طاولتك مسبقاً عبر الهاتف أو موقعنا الإلكتروني لضمان أفضل مكان في الأوقات المزدحمة</p>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-truck"></i>
+                    </div>
+                    <h3>توصيل الطلبات</h3>
+                    <p>خدمة توصيل سريعة لمنزلك أو مكتبك في جميع أنحاء بغداد مع ضمان وصول الطلب ساخناً وطازجاً</p>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-birthday-cake"></i>
+                    </div>
+                    <h3>حفلات الأعياد</h3>
+                    <p>نظم حفلات أعياد ميلاد ومناسبات خاصة في قاعاتنا المجهزة مع تزيين خاص وقوائم طعام مخصصة</p>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3>قاعات خاصة</h3>
+                    <p>قاعات منفصلة ومجهزة للعائلات والاجتماعات التجارية مع خصوصية تامة وخدمة مخصصة</p>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-wifi"></i>
+                    </div>
+                    <h3>واي فاي مجاني</h3>
+                    <p>اتصال إنترنت عالي السرعة مجاني لجميع العملاء مع نقاط شحن للهواتف وأجهزة اللابتوب</p>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-parking"></i>
+                    </div>
+                    <h3>مواقف مجانية</h3>
+                    <p>مواقف واسعة وآمنة للسيارات مع خدمة فالشون للضيوف في الأوقات المزدحمة</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-col">
+                    <h3>مقهى لاكاس العراقي</h3>
+                    <p>وجهتكم المفضلة في بغداد للاستمتاع بأجواء عراقية أصيلة مع أفضل المأكولات والمشروبات.</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-tiktok"></i></a>
+                        <a href="#"><i class="fab fa-telegram"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>روابط سريعة</h3>
+                    <ul class="footer-links">
+                        <li><a href="#home"><i class="fas fa-chevron-left"></i> الرئيسية</a></li>
+                        <li><a href="#about"><i class="fas fa-chevron-left"></i> عن لاكاس</a></li>
+                        <li><a href="#categories"><i class="fas fa-chevron-left"></i> أقسام المنيو</a></li>
+                        <li><a href="#menu"><i class="fas fa-chevron-left"></i> المنيو الكامل</a></li>
+                        <li><a href="#services"><i class="fas fa-chevron-left"></i> خدماتنا</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>أقسام المنيو</h3>
+                    <ul class="footer-links">
+                        <li><a href="#hot-drinks"><i class="fas fa-mug-hot"></i> المشروبات الساخنة</a></li>
+                        <li><a href="#cold-drinks"><i class="fas fa-glass-whiskey"></i> المشروبات الباردة</a></li>
+                        <li><a href="#hookah"><i class="fas fa-smoking"></i> النراكيل</a></li>
+                        <li><a href="#iraqi-food"><i class="fas fa-utensil-spoon"></i> المأكولات العراقية</a></li>
+                        <li><a href="#desserts"><i class="fas fa-birthday-cake"></i> الحلويات</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>اتصل بنا</h3>
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>العامرية، بغداد، العراق</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-phone"></i>
+                            <span>+964 780 123 4567</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <span>info@lacasa-iraq.com</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-clock"></i>
+                            <span>من 9 صباحاً إلى 2 صباحاً</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-calendar"></i>
+                            <span>كل أيام الأسبوع</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>© 2023 جميع الحقوق محفوظة | مقهى لاكاس العراقي - بغداد</p>
+                <p>تصميم وتطوير <a href="#">فريق لاكاس التقني</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to top button -->
+    <a href="#home" class="back-to-top" id="backToTop">
+        <i class="fas fa-chevron-up"></i>
+    </a>
+
+    <!-- Floating WhatsApp -->
+    <a href="https://wa.me/9647801234567" class="whatsapp-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const navLinks = document.getElementById('navLinks');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            mobileMenuBtn.innerHTML = navLinks.classList.contains('active') 
+                ? '<i class="fas fa-times"></i>' 
+                : '<i class="fas fa-bars"></i>';
+        });
+        
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+            });
+        });
+        
+        // Header scroll effect
+        const header = document.getElementById('header');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 100) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+        
+        // Back to top button
+        const backToTop = document.getElementById('backToTop');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 500) {
+                backToTop.classList.add('visible');
+            } else {
+                backToTop.classList.remove('visible');
+            }
+        });
+        
+        // Menu tabs functionality
+        const menuTabs = document.querySelectorAll('.menu-tab');
+        const menuPanels = document.querySelectorAll('.menu-panel');
+        const categoryButtons = document.querySelectorAll('.category-btn');
+        
+        function switchMenuTab(tabId) {
+            // Update tabs
+            menuTabs.forEach(tab => {
+                if (tab.dataset.tab === tabId) {
+                    tab.classList.add('active');
+                } else {
+                    tab.classList.remove('active');
+                }
+            });
+            
+            // Update panels
+            menuPanels.forEach(panel => {
+                if (panel.id === `${tabId}-panel`) {
+                    panel.classList.add('active');
+                } else {
+                    panel.classList.remove('active');
+                }
+            });
+            
+            // Animate menu items
+            animateMenuItems();
+        }
+        
+        // Tab click events
+        menuTabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                switchMenuTab(tab.dataset.tab);
+            });
+        });
+        
+        // Category button click events
+        categoryButtons.forEach(button => {
+            button.addEventListener('click', (e) => {
+                e.preventDefault();
+                const tabId = button.dataset.tab;
+                switchMenuTab(tabId);
+                
+                // Scroll to menu section
+                document.getElementById('menu').scrollIntoView({ behavior: 'smooth' });
+            });
+        });
+        
+        // Animate menu items on scroll
+        function animateMenuItems() {
+            const menuItems = document.querySelectorAll('.menu-item-card');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, {
+                threshold: 0.1,
+                rootMargin: '0px 0px -100px 0px'
+            });
+            
+            menuItems.forEach(item => observer.observe(item));
+        }
+        
+        // Initialize animation for first panel
+        setTimeout(() => {
+            animateMenuItems();
+        }, 500);
+        
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                if (this.getAttribute('href') === '#') return;
+                
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 90,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Initialize header on load
+        window.addEventListener('load', () => {
+            if (window.scrollY > 100) {
+                header.classList.add('scrolled');
+            }
+        });
+    </script>
+</body>
+</html>
